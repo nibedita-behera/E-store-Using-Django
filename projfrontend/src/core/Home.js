@@ -13,10 +13,9 @@ export default function Home() {
   const loadAllProducts = () => {
     getProducts()
       .then((data) => {
-        if (data?.error) {
+        if (data && data.error) {
           setError(data.error);
           console.log(error);
-        
         } else {
           setProducts(data);
         }
@@ -31,7 +30,7 @@ export default function Home() {
     <Base title="Home Page" description="Welcome to Tshirt store">
       <h1>Home component</h1>
       <div className="row">
-        {products&& products.map((product, index) => {
+        {products && products.map((product, index) => {
           return (
             <div key={index} className="col-4 mb-4">
               <Card product={product} />
